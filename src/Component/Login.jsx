@@ -36,14 +36,20 @@ export default class Login extends Component{
     render()
     {
         return(
-            <div>
-                {/* <form onSubmit = {this.handleSubmit}> */}
-                    <label>Username: </label>
-                    <input value = {this.state.userName} type="text" name = "userName" onChange={this.handleChange} ></input>
-                    <label>Password: </label>
-                    <input value = {this.state.passWord} type="text" name = "passWord" onChange={this.handleChange} ></input>
-                    <button onClick = {this.handleForm}>Login</button>
-                {/* </form> */}
+            <div className = "container">
+                <div className = "row">
+                   <div className = "col">
+                        <form className = "loginBox" onSubmit = {this.handleSubmit}>
+                            <div className = "loginBoxField">
+                                <label className>Username: </label>
+                                <input value = {this.state.userName} type="text" name = "userName" onChange={this.handleChange} ></input>
+                                <label>Password: </label>
+                                <input value = {this.state.passWord} type="text" name = "passWord" onChange={this.handleChange} ></input>
+                                <button className = "btn" onClick = {this.handleForm}>Login</button>
+                            </div>
+                        </form>
+                   </div>
+                </div>
             </div>
         );
     }

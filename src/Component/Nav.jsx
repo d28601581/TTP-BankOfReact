@@ -15,10 +15,13 @@ export default class Nav extends Component{
                         <Link to="/login">Login</Link>
                     </li>
                     {this.props.logOut? 
-                    <li>
-                        <button onClick = {this.props.logOutFunction}>Sign Out</button>
-                    </li>: null
+                    <>
+                        <li><Link to="/creditpage">Credit</Link></li>
+                        <li><Link to="/debitpage">Debit</Link></li>
+                        <li><button onClick = {this.props.logOutFunction}>Sign Out</button></li>
+                    </>: null
                     }
+                   
                 </ul>
             </div>
         );

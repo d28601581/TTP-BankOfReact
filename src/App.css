@@ -36,3 +36,53 @@
     transform: rotate(360deg);
   }
 }
+
+.loginBox{
+  border: 1px solid gray;
+  height: 60vh; 
+  width: 500px;
+  margin-left: 330px;
+  border-radius: 5%;
+}
+
+.loginBoxField{
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  margin-left: 160px;
+}
+
+.loginBox label
+{
+  margin-top: 2em;
+}
+
+.loginBox input, button
+{
+  width: 50%;
+  padding: 0.40rem;
+}
+
+.loginBox input{
+  width: 60%;
+  border-radius: 20px;
+  border: 0.1px solid gray;
+}
+
+.loginBox input:focus{
+  outline: none;
+}
+
+.loginBox button{
+  width: 35%;
+  margin-top: 1em;
+  margin-left: 40px;
+  border-radius: 20px;
+  border: 1px gray solid;
+  background-color: green;
+}
+
+.btn:focus,.btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}

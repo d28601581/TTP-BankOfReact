@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react';
 import React, { Component } from 'react';
+import AccountAmount from './accountAmount';
 
 export default class UserProfile extends Component
 {
@@ -18,8 +19,7 @@ export default class UserProfile extends Component
     {
         return(
             <div>
-                <h1>{this.state.accountBalance} dollars </h1>
-                <h1>Member since: {this.state.currentUser.memberSince}</h1>
+                <AccountAmount money = {this.state.accountBalance}/>
             </div>
         )
     }
