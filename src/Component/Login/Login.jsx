@@ -21,6 +21,7 @@ export default class Login extends Component{
     handleForm = () =>
     {
         this.props.validHandler(this.state.userName, this.state.passWord);
+        this.props.handleNavAppear();    
         this.setState({
             userName: '',
             passWord: '',

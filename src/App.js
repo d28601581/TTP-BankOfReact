@@ -5,10 +5,11 @@ import { Redirect } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
-import Home from './Component/Home';
-import Login from './Component/Login';
+
+import Home from './Component/Home/Home';
+import Login from './Component/Login/Login';
 import UserProfile from './Component/UserProfile/UserProfile';
-import Nav from './Component/Nav';
+import Nav from './Component/Nav/Nav';
 import DebtPage from './Component/DebitPage/DebtPage';
 import CreditPage from './Component/CreditPage/CreditPage';
 
@@ -20,32 +21,29 @@ export default class App extends Component{
     this.state = 
     {
       users: {
-        name: 'Ben',
-        password: '123',
+        name: '',
+        password: '',
+        balance: '',
       },
-      isValid: false,
+      
       isLoggedIn: false,
       debt: [],
-      cedit: []
+      cedit: [],
+      login: false,
     }
   }
 
   handleValidation = (username, password) =>
   {
-      let user = this.state.users;
-      if(user.name === username && user.password === password)
-      {
-        console.log("here");  
-        this.setState({
-            isValid: true,
-            isLoggedIn: true
-          })
-      }else{
-          this.setState({
-            isValid: false,
-            isLoggedIn: false
-          })
-      }
+      this.setState({
+        users:{
+          name: username,
+          password: password,
+          balance: "1000"
+        },
+        isLoggedIn: true
+      })
+      
   }
 
   handleSignOut = () =>
@@ -82,9 +80,12 @@ export default class App extends Component{
 
   addCredit = (descriptionX, amountX) =>
   {
+    var today = Date().toLocaleString()
+    
       let c = {
         description: descriptionX,
         amount: amountX,
+        date: today
       }
       let creditArray = this.state.credit;
       creditArray.push(c);
@@ -92,31 +93,51 @@ export default class App extends Component{
 
   addDebit = (descriptionX, amountX) =>
   {
-      let c = {
+    var today = Date().toLocaleString()  
+    let c = {
         description: descriptionX,
         amount: amountX,
+        date: today,
       }
       let debitArray = this.state.debt;
       debitArray.push(c);
+  }
+
+  handleLoginNav = () =>
+  {
+      this.setState({
+        login: true
+      })
+  }
+
+  handleNavAppear = () =>
+  {
+    this.setState({
+      login: false
+    })
   }
 
   render()
   {
     return(
       <Router>
-         <div className = "container-fluid" style={{padding: '0'}}>
-           <div className = "row">
-              <div className = "col">
-                <Nav logOut = {this.state.isLoggedIn} logOutFunction = {this.handleSignOut}/>
+         {
+           this.state.login?
+           null :
+           <div className = "container-fluid" style={{padding: '0'}}>
+              <div className = "row">
+                <div className = "col">
+                  <Nav handleLoginNav = {this.handleLoginNav} logOut = {this.state.isLoggedIn} logOutFunction = {this.handleSignOut} debtArray = {this.retrieveDebt} creditArray = {this.retrieveCredit}/>
+                </div>
               </div>
-           </div>
-        </div>
+          </div>
+         }
             <Switch>
                 <Route exact path="/"><Home/></Route>
-                <Route exact path="/login"><Login validHandler = {this.handleValidation} isValid = {this.state.isValid}/></Route>
-                <Route exact path="/userprofile"><UserProfile/></Route>
-                <Route exact path="/debitpage" ><DebtPage addDebit = {this.addDebit} debtArray = {this.retrieveDebt} array = {this.state.debt}/></Route>
-                <Route exact path="/creditpage"><CreditPage addCredit =  {this.addCredit} creditArray = {this.retrieveCredit} array = {this.state.credit}/></Route>
+                <Route exact path="/login"><Login handleNavAppear = {this.handleNavAppear} validHandler = {this.handleValidation} isValid = {this.state.isValid}/></Route>
+                <Route exact path="/userprofile"><UserProfile money = {this.state.users['balance']} name = {this.state.users.name}/></Route>
+                <Route exact path="/debitpage" ><DebtPage money = {this.state.users['balance']} addDebit = {this.addDebit} array = {this.state.debt}/></Route>
+                <Route exact path="/creditpage"><CreditPage money = {this.state.users['balance']} addCredit =  {this.addCredit} array = {this.state.credit}/></Route>
             </Switch>
             {
               this.state.isLoggedIn? 

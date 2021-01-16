@@ -1,0 +1,13 @@
+.userHomePage{
+    background-color: bisque;
+    height: 88vh;
+    position: relative;
+    text-align: center;
+}
+
+.userInformation
+{
+    position: absolute;
+    left: 830px;
+    top: 300px;
+}

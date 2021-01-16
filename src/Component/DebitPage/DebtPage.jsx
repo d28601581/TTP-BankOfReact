@@ -44,35 +44,30 @@ export default class DebitPage extends Component
     render()
     {
         return(
-            <div>
-                <button onClick={this.props.debtArray}>Debit</button>
+            <div className = "debtPage">
                 <button onClick = {this.addDebit}>Add Debit</button>
                 {
                     this.state.isClicked?
                     <div className= "inputField">
+                        <label>Description:</label>
                         <input value = {this.state.description} type ="text" name = "description" onChange = {this.handleDebitChange}></input>
+                        <label>Amount:</label>
                         <input value = {this.state.amount} type ="text" name = "amount" onChange = {this.handleDebitChange}></input>
-                        <button onClick = {this.handleSubmit}>Submit</button>
+                        <button onClick = {this.handleSubmit}>Add</button>
                     </div> 
                     : null
                 }
+
+                <div className = "Balance">
+                    <AccountAmount money=  {this.props.money}/>
+                </div>
                 
                 {
                     this.props.array?
                
                 <table className = "statement">
                     
-                    <tr>
-                        <td>
-                            Description
-                        </td>
-                        <td>
-                            Amount
-                        </td>
-                        <td>
-                            Date
-                        </td>
-                    </tr>
+                   
                     {
                         this.props.array.map((index) => {
                             

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import AccountAmount from '../accountAmount';
+import './CreditPage.css';
 
 export default class CreditPage extends Component
 {
@@ -42,19 +43,23 @@ export default class CreditPage extends Component
     render()
     {
         return(
-            <div>
-                <button onClick={this.props.creditArray}>Credit</button>
+            <div className = "debitPage">
                 <button onClick = {this.addCredit}>Add Credit</button>
                 {
                     this.state.isClicked?
                     <div className= "inputField">
+                        <label>Description:</label>
                         <input value = {this.state.description} type ="text" name = "description" onChange = {this.handleCreditChange}></input>
+                        <label>Amount:</label>
                         <input value = {this.state.amount} type ="text" name = "amount" onChange = {this.handleCreditChange}></input>
-                        <button onClick = {this.handleSubmit}>Submit</button>
+                        <button className = "Add" onClick = {this.handleSubmit}>Add</button>
                     </div> 
                     : null
                 }
-                <AccountAmount money= "500"/>
+                <div className = "Balance">
+                    <AccountAmount money=  {this.props.money}/>
+                </div>
+
                 {
                     this.props.array?
                

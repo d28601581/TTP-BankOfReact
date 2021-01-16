@@ -1,17 +1,17 @@
 import { render } from '@testing-library/react';
 import React, { Component } from 'react';
 import AccountAmount from '../accountAmount';
-import Home from '../Home';
+import './UserProfile.css';
 
 export default class UserProfile extends Component
 {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
-            accountBalance: 100,
+            accountBalance: props.money,
             currentUser: {
-                userName: 'bob_loblaw',
-                memberSince: '08/23/99',
+                userName: props.name,
+                memberSince: '',
             }
         }
     }
@@ -20,8 +20,11 @@ export default class UserProfile extends Component
     {
         return(
             <div className = "userHomePage">
-                <h1>{`Hello ${this.state.currentUser.userName}`}</h1>
-                <AccountAmount money = {this.state.accountBalance}/>
+                <div className = "userInformation">
+                    <h1>{`Hello, ${this.state.currentUser.userName}`}</h1>
+        
+                    <AccountAmount money = {this.state.accountBalance}/>
+                </div>
             </div>
         )
     }
