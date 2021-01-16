@@ -1,0 +1,10 @@
+.homePage{
+    height: 88.2vh;
+    background-color: violet;
+    text-align: center;
+}
+
+.homePage h1{
+    position: relative;
+    top: 300px;
+}

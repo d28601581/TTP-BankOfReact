@@ -1,11 +1,12 @@
 import React from 'react';
 import Login from './Login';
+import './Home.css';
 
 export default function Home()
 {
     return(
-    <div>
-        <h1>Home Page</h1>
+    <div className = "homePage">
+        <h1>Welcome to Bank Of React</h1>
     </div>
     );
 }   

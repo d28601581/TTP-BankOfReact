@@ -1,0 +1,28 @@
+.bankNav{
+    height: 100px;
+    background-color: gray;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.Logo{
+    font-size: 2.5rem;
+    margin: 20px;   
+    align-self: start;
+   
+}
+
+.menu{
+    display: flex;
+    list-style: none;
+    width: 700px;
+    justify-content: space-around;    
+    margin-top: 10px;
+}
+
+.link{
+    font-size: 2rem;
+    color: white;
+}

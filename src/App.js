@@ -1,6 +1,6 @@
 import './App.css';
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { Redirect } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
@@ -73,41 +73,51 @@ export default class App extends Component{
       let url = "https://moj-api.herokuapp.com/credits";
       try 
         {
-          let credit = await axios.get(url);
-          console.log(credit['data']);
+          let credit = await axios.get(url);  
           this.setState({ credit: credit['data']});
         } catch (error) {
           console.error(error);
         } 
   }
 
-  addCredit = () =>{
-
+  addCredit = (descriptionX, amountX) =>
+  {
+      let c = {
+        description: descriptionX,
+        amount: amountX,
+      }
+      let creditArray = this.state.credit;
+      creditArray.push(c);
   }
 
-  addDebit = () =>{
-
+  addDebit = (descriptionX, amountX) =>
+  {
+      let c = {
+        description: descriptionX,
+        amount: amountX,
+      }
+      let debitArray = this.state.debt;
+      debitArray.push(c);
   }
-
 
   render()
   {
     return(
       <Router>
-         <div className = "container" fluid>
+         <div className = "container-fluid" style={{padding: '0'}}>
            <div className = "row">
               <div className = "col">
                 <Nav logOut = {this.state.isLoggedIn} logOutFunction = {this.handleSignOut}/>
               </div>
            </div>
         </div>
-            <switch>
+            <Switch>
                 <Route exact path="/"><Home/></Route>
                 <Route exact path="/login"><Login validHandler = {this.handleValidation} isValid = {this.state.isValid}/></Route>
                 <Route exact path="/userprofile"><UserProfile/></Route>
-                <Route exact path="/debitpage" ><DebtPage debtArray = {this.retrieveDebt} array = {this.state.debt}/></Route>
-                <Route exact path="/creditpage"><CreditPage creditArray = {this.retrieveCredit} array = {this.state.credit}/></Route>
-            </switch>
+                <Route exact path="/debitpage" ><DebtPage addDebit = {this.addDebit} debtArray = {this.retrieveDebt} array = {this.state.debt}/></Route>
+                <Route exact path="/creditpage"><CreditPage addCredit =  {this.addCredit} creditArray = {this.retrieveCredit} array = {this.state.credit}/></Route>
+            </Switch>
             {
               this.state.isLoggedIn? 
               <Redirect to='/userprofile'/> :

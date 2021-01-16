@@ -1,29 +1,32 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import './nav.css';
 
 export default class Nav extends Component{
     render()
     {
         return(
-            <div>
-                <h1>Bank Of React</h1>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/login">Login</Link>
-                    </li>
+            <nav className = "bankNav">
+                <div className = "Logo">
+                    <h1>Bank Of React</h1>
+                </div>
+                <ul className = "menu">
+                    
                     {this.props.logOut? 
                     <>
-                        <li><Link to="/creditpage">Credit</Link></li>
-                        <li><Link to="/debitpage">Debit</Link></li>
-                        <li><button onClick = {this.props.logOutFunction}>Sign Out</button></li>
-                    </>: null
+                        <li><Link className = "link" to="/">Home</Link></li>
+                        <li><Link className = "link" to="/creditpage">Credit</Link></li>
+                        <li><Link className = "link" to="/debitpage">Debit</Link></li>
+                        <li><Link className = "link" to="/" onClick = {this.props.logOutFunction}>Sign Out</Link></li>
+                    </>: 
+                        <>
+                        <li><Link className = "link" to="/">Home</Link></li>
+                        <li><Link className = "link" to="/login">Login</Link> </li>
+                        </>
                     }
                    
                 </ul>
-            </div>
+            </nav>
         );
     }
 }
