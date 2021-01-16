@@ -7,10 +7,10 @@ import axios from 'axios';
 
 import Home from './Component/Home';
 import Login from './Component/Login';
-import UserProfile from './Component/UserProfile';
+import UserProfile from './Component/UserProfile/UserProfile';
 import Nav from './Component/Nav';
-import DebtPage from './Component/DebtPage';
-import CreditPage from './Component/CreditPage';
+import DebtPage from './Component/DebitPage/DebtPage';
+import CreditPage from './Component/CreditPage/CreditPage';
 
 export default class App extends Component{
   

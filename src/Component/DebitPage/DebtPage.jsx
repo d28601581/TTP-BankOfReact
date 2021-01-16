@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './DebitPage.css';
-import AccountAmount from './accountAmount';
+import AccountAmount from '../accountAmount';
 
 export default class DebitPage extends Component
 {

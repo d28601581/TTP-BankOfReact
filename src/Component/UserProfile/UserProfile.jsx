@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import React, { Component } from 'react';
-import AccountAmount from './accountAmount';
-import Home from './Home';
+import AccountAmount from '../accountAmount';
+import Home from '../Home';
 
 export default class UserProfile extends Component
 {
@@ -19,8 +19,9 @@ export default class UserProfile extends Component
     render()
     {
         return(
-            <div>
-                <Home/>
+            <div className = "userHomePage">
+                <h1>{`Hello ${this.state.currentUser.userName}`}</h1>
+                <AccountAmount money = {this.state.accountBalance}/>
             </div>
         )
     }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import AccountAmount from './accountAmount';
+import AccountAmount from '../accountAmount';
 
 export default class CreditPage extends Component
 {
