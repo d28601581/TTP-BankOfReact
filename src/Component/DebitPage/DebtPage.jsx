@@ -10,7 +10,7 @@ export default class DebitPage extends Component
         this.state = 
         {
             description: '',
-            amount: '',
+            amount: 0,
             date: '',
             isClicked: false
         }

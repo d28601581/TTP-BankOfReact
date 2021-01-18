@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { Redirect } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 
 import Home from './Component/Home/Home';
@@ -23,9 +24,11 @@ export default class App extends Component{
       users: {
         name: '',
         password: '',
-        balance: '',
+        balance: 0,
       },
       
+      creditSum: 0,
+      debitSum: 0,
       isLoggedIn: false,
       debt: [],
       cedit: [],
@@ -39,8 +42,10 @@ export default class App extends Component{
         users:{
           name: username,
           password: password,
-          balance: "1000"
+          balance: 0,
         },
+        creditSum: 0,
+        debitSum: 0,
         isLoggedIn: true
       })
       
@@ -59,8 +64,21 @@ export default class App extends Component{
       try 
         {
           let debt = await axios.get(url);
-          console.log(debt['data']);
-          this.setState({ debt: debt['data']});
+          let sum = 0;
+          debt.data.map((data) => {
+            sum += data["amount"];
+          });
+
+          this.setState({ 
+            debt: debt['data'],
+            debitSum: sum,
+            creditSum: this.state.creditSum,
+            users: {
+              name: this.state.users.name,
+              balance: this.state.creditSum - this.state.debitSum,
+            }
+          });
+
         } catch (error) {
           console.error(error);
         } 
@@ -72,7 +90,22 @@ export default class App extends Component{
       try 
         {
           let credit = await axios.get(url);  
-          this.setState({ credit: credit['data']});
+
+          let sum = 0;
+          credit.data.map((data) => {
+            sum += data["amount"];
+          });
+
+          this.setState({ 
+            credit: credit['data'],
+            debitSum: this.state.debitSum,
+            creditSum: sum,
+            users: {
+              name: this.state.users.name,
+              balance: this.state.creditSum - this.state.debitSum,
+            }
+          });
+          
         } catch (error) {
           console.error(error);
         } 
@@ -84,9 +117,18 @@ export default class App extends Component{
     
       let c = {
         description: descriptionX,
-        amount: amountX,
-        date: today
+        amount: parseInt(amountX),
+        date: today,
       }
+
+      this.setState({ 
+        creditSum: this.state.creditSum + c.amount,
+        users:{
+          name: this.state.users.name,
+          balance: this.state.creditSum - this.state.debitSum,
+        }
+      })
+
       let creditArray = this.state.credit;
       creditArray.push(c);
   }
@@ -96,11 +138,20 @@ export default class App extends Component{
     var today = Date().toLocaleString()  
     let c = {
         description: descriptionX,
-        amount: amountX,
+        amount: parseInt(amountX),
         date: today,
+    }
+
+    this.setState({ 
+      debitSum: this.state.debitSum + c.amount,
+      users:{
+        name: this.state.users.name,
+        balance: this.state.creditSum - this.state.debitSum,
       }
-      let debitArray = this.state.debt;
-      debitArray.push(c);
+    })
+    
+    let debitArray = this.state.debt;
+    debitArray.push(c);
   }
 
   handleLoginNav = () =>
@@ -146,5 +197,15 @@ export default class App extends Component{
             }
       </Router>
     )
+  }
+}
+
+App.propTypes = {
+  creditSum: PropTypes.number,
+  debitSum: PropTypes.number,
+  users:{
+    balance: PropTypes.number,
+    name: PropTypes.string,
+    password: PropTypes.string    
   }
 }

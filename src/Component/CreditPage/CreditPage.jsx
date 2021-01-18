@@ -11,7 +11,7 @@ export default class CreditPage extends Component
         this.state = 
         {
             description: '',
-            amount: '',
+            amount: 0,
             date: '',
             isClicked: false
         }
@@ -70,29 +70,29 @@ export default class CreditPage extends Component
                 <div className = "Balance">
                     <AccountAmount money=  {this.props.money}/>
                 </div>
-
                 {
                     this.props.array?
-               
-                <table  className = "statement">
-                    {
-                        this.props.array.map((index, row) => {
+                
+                        <table  className = "statement">
+                            {
+                                this.props.array.map((index, row) => {
 
-                            return(
-                                <tr key = {`row${row+1}`}>
-                                    <td><div className = "items">{index.description}</div></td>
-                                    <td>{`$${index.amount}`}</td>
-                                    <td>{index.date}</td>
-                                </tr>
-                                
-                            )
-                            })
-                    }
-                </table>
+                                    return(
+                                        <tr key = {`row${row+1}`}>
+                                            <td><div className = "items">{index.description}</div></td>
+                                            <td>{`$${index.amount}`}</td>
+                                            <td>{index.date}</td>
 
+                                        </tr>
+                                    )
+                                    })
+                            }
+
+                        </table>
                     : null
-                 }
+                }
             </div>
+            
         )
     }
 }
