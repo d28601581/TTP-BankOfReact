@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/bank-react/static/css/main.70f750e3.chunk.css",
-    "main.js": "/bank-react/static/js/main.d12a3f8e.chunk.js",
-    "main.js.map": "/bank-react/static/js/main.d12a3f8e.chunk.js.map",
-    "runtime-main.js": "/bank-react/static/js/runtime-main.a00163b4.js",
-    "runtime-main.js.map": "/bank-react/static/js/runtime-main.a00163b4.js.map",
+    "main.css": "/bank-react/static/css/main.1dd3911d.chunk.css",
+    "main.js": "/bank-react/static/js/main.744a9bde.chunk.js",
+    "main.js.map": "/bank-react/static/js/main.744a9bde.chunk.js.map",
+    "runtime-main.js": "/bank-react/static/js/runtime-main.84637cb0.js",
+    "runtime-main.js.map": "/bank-react/static/js/runtime-main.84637cb0.js.map",
     "static/css/2.ae9f1eb3.chunk.css": "/bank-react/static/css/2.ae9f1eb3.chunk.css",
-    "static/js/2.6a99ced3.chunk.js": "/bank-react/static/js/2.6a99ced3.chunk.js",
-    "static/js/2.6a99ced3.chunk.js.map": "/bank-react/static/js/2.6a99ced3.chunk.js.map",
-    "static/js/3.3f12250a.chunk.js": "/bank-react/static/js/3.3f12250a.chunk.js",
-    "static/js/3.3f12250a.chunk.js.map": "/bank-react/static/js/3.3f12250a.chunk.js.map",
+    "static/js/2.25dcaa18.chunk.js": "/bank-react/static/js/2.25dcaa18.chunk.js",
+    "static/js/2.25dcaa18.chunk.js.map": "/bank-react/static/js/2.25dcaa18.chunk.js.map",
+    "static/js/3.974e886b.chunk.js": "/bank-react/static/js/3.974e886b.chunk.js",
+    "static/js/3.974e886b.chunk.js.map": "/bank-react/static/js/3.974e886b.chunk.js.map",
     "index.html": "/bank-react/index.html",
     "static/css/2.ae9f1eb3.chunk.css.map": "/bank-react/static/css/2.ae9f1eb3.chunk.css.map",
-    "static/css/main.70f750e3.chunk.css.map": "/bank-react/static/css/main.70f750e3.chunk.css.map",
-    "static/js/2.6a99ced3.chunk.js.LICENSE.txt": "/bank-react/static/js/2.6a99ced3.chunk.js.LICENSE.txt"
+    "static/css/main.1dd3911d.chunk.css.map": "/bank-react/static/css/main.1dd3911d.chunk.css.map",
+    "static/js/2.25dcaa18.chunk.js.LICENSE.txt": "/bank-react/static/js/2.25dcaa18.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.a00163b4.js",
+    "static/js/runtime-main.84637cb0.js",
     "static/css/2.ae9f1eb3.chunk.css",
-    "static/js/2.6a99ced3.chunk.js",
-    "static/css/main.70f750e3.chunk.css",
-    "static/js/main.d12a3f8e.chunk.js"
+    "static/js/2.25dcaa18.chunk.js",
+    "static/css/main.1dd3911d.chunk.css",
+    "static/js/main.744a9bde.chunk.js"
   ]
 }
