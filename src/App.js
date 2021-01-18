@@ -122,6 +122,22 @@ export default class App extends Component{
     })
   }
 
+  updateBalance = (amount) => {
+    
+     let a = this.state.users.balance - amount;
+     if(a == 0 || a < 0)
+     {
+       alert("You can't do that");
+     }else{
+      this.setState({
+        users: {
+          ...this.state.users,
+          balance: a
+        }
+      })
+     }
+  }
+
   render()
   {
     return(
@@ -141,8 +157,8 @@ export default class App extends Component{
                 <Route exact path="/"><Home/></Route>
                 <Route exact path="/login"><Login handleNavAppear = {this.handleNavAppear} validHandler = {this.handleValidation} isValid = {this.state.isValid}/></Route>
                 <Route exact path="/userprofile"><UserProfile money = {this.state.users['balance']} name = {this.state.users.name}/></Route>
-                <Route exact path="/debitpage" ><DebtPage money = {this.state.users['balance']} addDebit = {this.addDebit} array = {this.state.debt}/></Route>
-                <Route exact path="/creditpage"><CreditPage money = {this.state.users['balance']} addCredit =  {this.addCredit} array = {this.state.credit}/></Route>
+                <Route exact path="/debitpage" ><DebtPage updateBalance = {this.updateBalance} money = {this.state.users['balance']} addDebit = {this.addDebit} array = {this.state.debt}/></Route>
+                <Route exact path="/creditpage"><CreditPage updateBalance = {this.updateBalance} money = {this.state.users['balance']} addCredit =  {this.addCredit} array = {this.state.credit}/></Route>
             </Switch>
             {
               this.state.isLoggedIn? 

@@ -40,12 +40,18 @@ export default class CreditPage extends Component
                 isClicked: false
             })
         }
+
+        this.handleBalance();
     }
 
     handleCancer = () => {
         this.setState({
             isClicked: false
         })
+    }
+
+    handleBalance = () => {
+        this.props.updateBalance(this.state.amount);
     }
     
     render()

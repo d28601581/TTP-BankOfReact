@@ -39,6 +39,7 @@ export default class DebitPage extends Component
                 isClicked: false
             })
         }
+        this.handleBalance();
     }
 
     handleCancer = () => {
@@ -47,8 +48,10 @@ export default class DebitPage extends Component
         })
     }
 
+    handleBalance = () => {
+        this.props.updateBalance(this.state.amount);
+    }
 
-   
     render()
     {
         return(
@@ -80,13 +83,13 @@ export default class DebitPage extends Component
                
                 <table className = "statement">
                     {
-                        this.props.array.map((index) => {
+                        this.props.array.map((index, numRow, numColumn) => {
                             
                             return(
-                                <tr key = "row">
-                                    <td>{index.description}</td>
-                                    <td>{`$${index.amount}`}</td>
-                                    <td>{index.date}</td>
+                                <tr key = {`rowDebt${numRow + 1}`}>
+                                    <td key = {`cellDebt${numColumn + 1}`}>{index.description}</td>
+                                    <td key = {`cellDebt${numColumn + 2}`}>{`${index.amount}`}</td>
+                                    <td key = {`cellDebt${numColumn + 3}`}>{index.date}</td>
                                 </tr>
                                 
                             )
