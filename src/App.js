@@ -33,6 +33,11 @@ export default class App extends Component{
     }
   }
 
+  componentDidMount(){
+    this.retrieveCredit();
+    this.retrieveDebt();
+  }
+
   handleValidation = (username, password) =>
   {
       this.setState({

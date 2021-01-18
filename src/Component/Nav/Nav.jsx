@@ -15,8 +15,8 @@ export default class Nav extends Component{
                     {this.props.logOut? 
                     <>
                         <li><Link className = "link" to="/userProfile">Home</Link></li>
-                        <li><Link onClick = {this.props.creditArray} className = "link" to="/creditpage">Credit</Link></li>
-                        <li><Link onClick = {this.props.debtArray} className = "link" to="/debitpage">Debit</Link></li>
+                        <li><Link className = "link" to="/creditpage">Credit</Link></li>
+                        <li><Link className = "link" to="/debitpage">Debit</Link></li>
                         <li><Link className = "link" to="/" onClick = {this.props.logOutFunction}>Sign Out</Link></li>
                     </>: 
                         <>
